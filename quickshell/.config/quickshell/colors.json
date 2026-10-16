@@ -1,0 +1,28 @@
+{
+  "wallpaper": "/home/nicolasryan/Pictures/Wallpapers/dl_8.jpg",
+  "alpha": "100",
+  "special": {
+    "background": "#171009",
+    "foreground": "#ffff96",
+    "cursor": "#ffff96",
+    "border": "#ffff96"
+  },
+  "colors": {
+    "color0": "#171009",
+    "color1": "#af4422",
+    "color2": "#f09f68",
+    "color3": "#ea9c72",
+    "color4": "#dbbe44",
+    "color5": "#e9c88d",
+    "color6": "#dad46c",
+    "color7": "#ffffff",
+    "color8": "#614329",
+    "color9": "#714334",
+    "color10": "#bb713f",
+    "color11": "#be744c",
+    "color12": "#9c8c47",
+    "color13": "#cba55d",
+    "color14": "#b1ad65",
+    "color15": "#ffff96"
+  }
+}

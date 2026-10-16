@@ -1,0 +1,33 @@
+# Avisa para o D-Bus e o systemd que tá no Sway e usando o Wayland
+exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
+
+# Força o portal a reiniciar
+exec systemctl --user restart xdg-desktop-portal
+
+# Força a carteira de senha do kde a rodar
+exec_always --no-startup-id /usr/bin/kwalletd6
+exec waybar swaybg
+exec_always blueman-applet
+exec_always nm-applet --indicator
+exec playerctld daemon
+exec killall wlsunset && wlsunset -T 5620 -t 5600 || killall wlsunset || wlsunset -T 5620 -t 5600
+
+# Notificador
+exec mako -c ~/.config/mako/config
+
+# Pega o ultimo walpaper selecionado
+exec bash ~/.cache/wall_atual.sh
+
+# Copia todo texto copiado com Ctrl+C
+exec wl-paste -t text/plain --watch cliphist store
+exec wl-paste -t image/png --watch cliphist store
+
+# Copia todo o texto que não foi pego na saida primária (Shift+Ctrl+C)
+exec wl-paste -p --watch cliphist store
+
+exec_always ~/.config/swayidle/idleconf
+
+# Para gerenciar os perfis automaticamente
+exec kanshi -c ~/.config/kanshi/config &
+
+exec sleep 5 systemctl --user restart wireplumber pipewire pipewire-pulse

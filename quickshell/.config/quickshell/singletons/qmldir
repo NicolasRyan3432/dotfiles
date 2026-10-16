@@ -1,0 +1,7 @@
+module singletons
+singleton Theme 1.0 Theme.qml
+singleton Time 1.0 Time.qml
+singleton Bright 1.0 Bright.qml
+singleton IpcManager 1.0 IpcManager.qml
+singleton AppLauncherState 1.0 AppLauncherState.qml
+singleton ControlCenterState 1.0 ControlCenterState.qml

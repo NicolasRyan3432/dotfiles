@@ -1,0 +1,5 @@
+# Deixa uma borda com dois pixels de tamanho só pra saber qual está em foco
+
+default_border pixel 2
+default_floating_border pixel 2
+hide_edge_borders smart
