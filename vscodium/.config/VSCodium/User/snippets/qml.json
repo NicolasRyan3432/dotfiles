@@ -1,0 +1,84 @@
+{	
+	"Import Singletons": {
+		"prefix": "imsingle",
+		"body": "import '../singletons' as Singletons",
+		"description": "Import Singletons"
+	},
+	"Import Components": {
+		"prefix": "imcomp",
+		"body": "import '../components' as Components",
+		"description": "Import Components"
+	},
+	"Import Quickshell": {
+		"prefix": "iquick",
+		"body": "import Quickshell",
+		"description": "Import Quickshell"
+	},
+	"Import QtQuick": {
+		"prefix": "iqtq",
+		"body": "import QtQuick",
+		"description": "Import QtQuick"
+	},
+	"Cria property": {
+		"prefix": "prop",
+		"body": "property $0",
+		"description": "Cria property"
+	},
+	"Cria default": {
+		"prefix": "df",
+		"body": "default $0",
+		"description": "Cria default"
+	},
+	"Cria required": {
+		"prefix": "req",
+		"body": "required $0",
+		"description": "Cria required"
+	},
+	"Cria readonly": {
+		"prefix": "reonly",
+		"body": "readonly $0",
+		"description": "Cria readonly"
+	},
+	"Cria propriedade real": {
+		"prefix": "preal",
+		"body": "property real $0",
+		"description": "Cria propriedade real"
+	},
+	"Cria required property": {
+		"prefix": "reprop",
+		"body": "required property $0",
+		"description": "Cria required property"
+	},
+	"Cria readonly property": {
+		"prefix": "ronlyprop",
+		"body": "readonly property $0",
+		"description": "Cria readonly property"
+	},
+	"Cria default required prop": {
+		"prefix": "defreqprop",
+		"body": "default required property $0",
+		"description": "Cria default required prop"
+	}
+	// Place your snippets for qml here. Each snippet is defined under a snippet name and has a prefix, body and 
+	// description. The prefix is what is used to trigger the snippet and the body will be expanded and inserted. Possible variables are:
+	// $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders. Placeholders with the 
+	// same ids are connected.
+	// Example:
+	// "Print to console": {
+	// 	"prefix": "log",
+	// 	"body": [
+	// 		"console.log('$1');",
+	// 		"$2"
+	// 	],
+	// 	"description": "Log output to console"
+	// }
+	//
+	// You can also restrict snippets to specific files using include/exclude patterns:
+	// "Test snippet": {
+	// 	"prefix": "test",
+	// 	"body": "test('$1', () => {\n\t$0\n});",
+	// 	"include": ["**/*.test.ts", "*.spec.ts"],
+	// 	"exclude": ["**/temp/*.ts"],
+	// 	"description": "Insert test block"
+	// }
+}

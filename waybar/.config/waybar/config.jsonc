@@ -1,0 +1,130 @@
+{
+    "layer": "top", // Waybar at top layer
+    "position": "top", // Waybar position (top|bottom|left|right)
+    "height": 38, //Waybar height (to be removed for auto height)
+    "spacing": 2, // Gaps between modules (4px)
+    
+    // Choose the order of the modules
+    "modules-left": [
+        "sway/workspaces",
+        "sway/scratchpad"
+    ],
+    "modules-center": [
+        "clock"
+    ],
+    "modules-right": [
+        "tray",
+        "pulseaudio",
+        "custom/player",
+        "backlight",
+        "battery",
+    ],
+    // Modules configuration
+   	"sway/workspaces": {
+	   	"format": "{icon}",
+   		"all-outputs": true,
+   		"disable-scroll": true,
+   		"persistent-workspaces": {
+   			"1": [],
+   			"2": [],
+   			"3": []
+   		},
+	    "format-icons": {
+			"urgent": "!"
+	    },
+   	},
+    "sway/scratchpad": {
+        "format": "{count}  {icon} ",
+        "show-empty": false,
+        "format-icons": ["", ""],
+        "tooltip": true,
+        "tooltip-format": "{app}: {title}",
+    },
+    "tray": {
+        "icon-size": 20,
+        "spacing": 10,
+         "icons": {
+         	"blueman": "bluetooth",
+        }
+    },
+    "clock": {
+        	"format": "{:%I:%M}",
+        	"format-alt": "{:%A, %d %B %Y (%R)}",
+        	"timezone": "America/Cuiaba",
+        	"tooltip-format": "<tt><small>{calendar}</small></tt>",
+        	"calendar": {
+        		"mode"          : "year",
+        		"mode-mon-col"  : 3,
+        		"on-scroll"     : 1,
+        		"on-click-right": "mode",
+        		"format": {
+        			"months":     "<span color='#ffead3'><b>{}</b></span>",
+        			"days":       "<span color='#ecc6d9'><b>{}</b></span>",
+        			"weeks":      "<span color='#99ffdd'><b>W{}</b></span>",
+        			"weekdays":   "<span color='#ffcc66'><b>{}</b></span>",
+        			"today":      "<span color='#ff6699'><b><u>{}</u></b></span>"
+        		}
+        	},
+        	"actions": {
+        		"on-click-right": "mode",
+        		"on-click-forward": "tz_up",
+        		"on-click-backward": "tz_down",
+        		"on-scroll-up": "shift_up",
+        		"on-scroll-down": "shift_down"
+     	}
+    },
+    "backlight": {
+        "tooltip": true,
+        "tooltip-format": "{percent}%",
+        "format": "{percent}% {icon}",
+        "format-icons": ["🌑", "🌘", "🌗", "🌖", "🌕"],
+        "on-scroll-up": "brightnessctl set 5%+ && ~/.local/bin/sway-brightness-notifier",
+        "on-scroll-down": "brightnessctl set 5%- && ~/.local/bin/sway-brightness-notifier",
+    },
+    "battery": {
+        "on-click": "~/.local/bin/waybar-menu_energia",
+    	"tooltip": true,
+    	"tooltip-format": "{capacity}%",
+        "states": {
+            "good": 75,
+            "warning": 45,
+            "critical": 15
+        },
+        "format": "{capacity}% {icon}",
+        "format-full": "{capacity}% 󰁹",
+        "format-charging": "{capacity}% 󰂄",
+        "format-plugged": "{capacity}% 󱟠",
+        "format-warning": "{capacity}% 󰂃",
+        "format-discharging": "{capacity}% 󱟞",
+		"format-icons": ["󰂎", "󰁻", "󰁾", "󰂀", "󰁹"]
+    },
+    "pulseaudio": {
+       	"tooltip": true,
+       	// "tooltip-format": "{device}"W,
+        "format": "{icon}  {format_source}",
+        "format-muted": "{icon}  {format_source}",
+        "format-bluetooth": "󰂰  {format_source}",
+		"format-bluetooth-muted": "󰂲  {format_source}",
+        "format-source": "",
+        "format-source-muted": "󰍭",
+        "format-icons": {
+        	"mute": "󰝟",
+            "headphone": "󰋋",
+            "default": ["", "", ""],
+        },
+        "on-click": "killall pavucontrol || pavucontrol",
+        "on-scroll-up": "wpctl set-volume -l 1.0 @DEFAULT_AUDIO_SINK@ 5%+ && ~/.local/bin/sway-vol-notifier",
+        "on-scroll-down": "wpctl set-volume -l 1.0 @DEFAULT_AUDIO_SINK@ 5%- && ~/.local/bin/sway-vol-notifier"
+        
+    },
+    "custom/player": {
+        "format": "{}",
+        "interval": 1,
+        "exec": "~/.local/bin/waybar-player",
+        "on-click-right": "~/.local/bin/waybar-menu_musica",
+        "on-click": "playerctl play-pause",
+        "on-scroll-up": "playerctl position 10+",
+        "on-scroll-down": "playerctl position 10-",
+        "max-length": 20
+    }
+}

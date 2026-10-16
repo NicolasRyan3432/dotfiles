@@ -1,0 +1,240 @@
+* {
+    font-family:  'JetBrains Mono', 'Font Awesome 7 Brands';
+    font-size: 13px;
+}
+@define-color bg-light rgba(39, 40, 34, 0.85);       /* Fundo cinza chumbo clássico */
+@define-color bg #272822;       /* Fundo cinza chumbo clássico */
+@define-color fg #f8f8f2;       /* Texto branquinho gelo */
+@define-color comment #75715e;  /* Cinza morto (excelente para botões inativos) */
+@define-color pink-light rgba(249, 38, 114, 0.7);     /* O rosa neon psicopata (A marca registrada) */
+@define-color pink rgb(249, 38, 114);     /* O rosa neon psicopata (A marca registrada) */
+@define-color green-light rgba(166, 226, 46, 0.5);    /* O verde limão nuclear */
+@define-color green #a6e22e;    /* O verde limão nuclear */
+@define-color orange-light rgba(253, 151, 31, 0.5);   /* Laranja bruto */
+@define-color orange #fd971f;   /* Laranja bruto */
+@define-color yellow #e6db74;   /* Amarelo gema */
+@define-color purple #ae81ff;   /* Roxo trevas */
+@define-color cyan-light rgba(102, 217, 239, 0.5);     /* Azul/Ciano bebê */
+@define-color cyan #66d9ef;     /* Azul/Ciano bebê */
+
+window#waybar {
+	background-color: transparent;
+    transition: all 0.25s ease-in-out;
+    border: 0;
+    color: @fg;
+}
+window#waybar.hidden {
+    opacity: 0.2;
+}
+
+button {
+	padding: 0px;
+    border: none;
+    border-radius: 0;
+}
+
+button:hover {
+    background: inherit;
+}
+
+#workspaces {
+	background-color: @bg;
+	border-radius: 16px;
+	border: 1px solid @purple;
+	padding: 4px 6px;
+	margin: 4px 2px;
+}
+#workspaces button {
+    background-color: transparent;
+    border-radius: 10px;
+    padding: 0 10px;
+    margin: 0 2px;
+   	transition: all 0.25s ease-in-out;
+    color: @comment;
+}
+
+#workspaces button:hover {
+    background-color: @comment;
+	color: @fg;    
+}
+
+#workspaces button.focused {
+	background-color: @pink-light;
+	padding: 0 20px;
+	border-radius: 12px;
+	transition: all 0.25s ease-in-out;
+	color: @fg;
+}
+
+#workspaces button.urgent {
+    background-color: @pink;
+    color: @fg;
+}
+
+#pulseaudio {
+    background-color: @bg;
+    border-radius: 16px;
+    min-width: 2px;
+    padding: 0 20px;
+    margin: 4px;
+    color: @fg;
+}
+
+#pulseaudio:hover {
+    background-color: @comment;
+    transition: all 0.25s ease-in-out;
+    color: @fg;
+}
+#pulseaudio.bluetooth {
+	background-color: @bg;
+    border-radius: 16px;
+    min-width: 2px;
+    padding: 0 20px;
+    margin: 4px;
+    color: @fg;
+}
+#pulseaudio.muted, pulseaudio.bluetooth.muted {
+    background-color: @comment;
+    color: @fg;
+}
+#pulseaudio.muted:hover, pulseaudio.muted.bluetooth:hover {
+    background-color: @comment;
+    color: @fg;
+}
+
+#tray {
+    background-color: @bg;
+    border-radius: 16px;
+    padding: 0 20px;
+    margin: 4px;
+    color: @fg;
+}
+#tray:hover {
+	background-color: @comment;
+	transition: all 0.25s ease-in-out;
+	color: @fg;
+}
+
+#clock {
+    background-color: @bg;
+    transition: all 0.25s ease-in-out;
+    border-radius: 16px;
+	padding: 0 20px;
+    margin: 4px;
+    color: @fg;
+}
+#clock:hover {
+	background-color: @comment;
+	transition: all 0.25s ease-in-out;
+    color: @fg;
+}
+
+#battery {
+    background-color: @bg;
+    border-radius: 16px;
+    padding: 0 20px;
+    margin: 4px;
+    color: @fg;
+   	transition: all 0.25s ease-in-out;
+}
+#battery.plugged:hover,
+#battery.charging:hover,
+#battery.discharging:hover,
+#battery.warning:hover,
+#battery:hover {
+	background-color: @comment;
+	color: @fg;
+	transition: all 0.25s ease-in-out;
+}
+
+#battery.plugged {
+	background-color: @bg;
+    color: @fg;
+}
+
+#battery.charging {
+    background-color: @green-light;
+    color: @fg;
+}
+#battery.discharging {
+	background-color: @orange-light;
+	color: @fg;
+}
+#battery.warning {
+	background-color: @pink-light;
+	color: @fg;
+}
+#backlight {
+   background-color: @bg;
+   border-radius: 16px;
+   padding: 0 20px;
+   margin: 4px;
+   color: @fg;
+   transition: all 0.25s ease-in-out;
+}
+#backlight:hover {
+	background-color: @comment;
+	color: @fg;
+}
+
+#scratchpad {
+    background: @bg;
+	border-radius: 16px;
+	padding: 0 20px;
+	margin: 4px;
+    color: @fg;
+   	transition: all 0.25s ease-in-out;
+
+}
+#scratchpad:hover {
+	background: @comment;
+	color: @fg;
+	transition: all 0.25s ease-in-out;
+
+}
+#scratchpad.empty {
+	background-color: transparent;
+}
+
+#custom-player {
+	background: @bg;
+	border-radius: 16px;
+	padding: 0 16px;
+	margin: 4px;
+    color: @fg;
+   	transition: all 0.25s ease-in-out;
+}
+#custom-player:hover {
+	background: @comment;
+	color: @fg;
+}
+
+#group-menu {
+	background: @bg;
+	border: 1 solid @purple;
+	border-radius: 16px;
+	padding: 0 10px;
+	margin: 4px 6px;
+    color: @fg;	
+}
+
+/* If workspaces is the leftmost module, omit left margin */
+.modules-left > widget:first-child > #workspaces {
+    margin-left: 15px;
+}
+
+/* If workspaces is the rightmost module, omit right margin */
+.modules-right > widget:last-child > #battery {
+    margin-right: 15px;
+}
+
+
+#tray > .passive {
+    -gtk-icon-effect: dim;
+}
+
+#tray > .needs-attention {
+    -gtk-icon-effect: highlight;
+    background-color: @bg;
+    color: @fg;
+}

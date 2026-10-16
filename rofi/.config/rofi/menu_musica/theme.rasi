@@ -1,0 +1,65 @@
+* {
+    background:                  #1E1F1CE6;
+    foreground:                  #F8F8F2E6;
+    background-color:            #272822E6;
+    normal-background:           transparent;
+    normal-foreground:           var(foreground);
+    selected-normal-foreground:  #F8F8F2;
+    selected-normal-background:  #49483E;
+    separatorcolor: #0d4bac;
+}
+window {
+	location: north east;
+	anchor: north east;
+	x-offset: -2px;
+	y-offset: 2px;
+	width: 300px;
+	height: 250px;
+    background-color: var(background-color);
+    border-color: var(separatorcolor);
+    border: 2;
+}
+listview {
+    border-color: var(separatorcolor);
+    spacing:      5px;
+    border:       2px 0 0;
+}
+element {
+	background-color: transparent;
+	text-color: #F8F8F2;
+    padding: 2px;
+    cursor: pointer;
+}
+element selected {
+    background-color: var(selected-normal-background);
+    text-color:       var(selected-normal-foreground);
+}
+element-text {
+	padding: 0 0 0 5px;
+	background-color: inherit;
+    text-color:       inherit;
+    vertical-align: 0.5;
+    cursor: pointer;
+}
+inputbar {
+    padding:    2px 0 2px 5px;
+    text-color: var(normal-foreground);
+    children:   [ "prompt","textbox-prompt-colon","entry" ];
+}
+entry {
+	vertical-align: 0.5;
+    text-color: var(normal-foreground);
+    cursor-color: rgb(22, 100, 230);
+    hide-cursor-on-empty: true;
+}
+prompt {
+	padding: 2px;
+	vertical-align: 0.5;
+	text-color: var(normal-foreground);
+}
+textbox-prompt-colon {
+	vertical-align: 0.5;
+	expand: false;
+    str: ":";
+    text-color: var(normal-foreground);
+}

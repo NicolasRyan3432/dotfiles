@@ -1,0 +1,49 @@
+font=FiraCode Nerd Font 12
+layer=overlay
+icons=0
+width=300
+height=110
+border-size=2
+sort=-time
+border-radius=24
+max-icon-size=64
+default-timeout=12000
+ignore-timeout=1
+border-color=#f8f8f2d9
+background-color=#272822
+text-color=#f8f8f2d9
+max-visible=3
+
+[urgency=low]
+border-color=#f8f8f2d9
+
+[urgency=normal]
+border-color=#fd971f80
+
+[urgency=high]
+border-color=#f92672b3
+
+[category=mpd]
+default-timeout=2000
+group-by=category
+
+
+[app-name=wp-vol]
+layer=overlay
+default-timeout=5000
+padding=0,0,0,20
+history=0
+border-size=0
+text-color=#f8f8f2d9
+progress-color=#f92672b3
+anchor=top-center
+
+# Group all volume notifications together
+group-by=app-name
+
+# Hide the group-index
+format=<b>%s</b>\n%b
+
+[app-name=volume group-index=0]
+# Only show last notification
+invisible=0

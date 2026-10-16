@@ -1,0 +1,65 @@
+#!/bin/bash
+
+videos="$HOME/Videos/Hidamari"
+imagens="$HOME/Pictures/Wallpapers"
+
+# 1. O GATILHO INICIAL (Sway chama o script)
+# Se não tem nenhum argumento ($1 vazio), ele inicia o Rofi!
+if [ -z "$1" ]; then
+
+    # O Rofi é invocado e usa ESSE PRÓPRIO SCRIPT ($0) para gerar as abas!
+    # -show-icons força o rofi a mostrar icones
+    rofi -config ~/.config/rofi/menu_walpaper/config.rasi \
+	     -show-icons \
+         -show Imagens \
+         -modi "Imagens:$0 --img,Vídeos:$0 --vid"
+    exit 0
+fi
+
+
+# 2. A LÓGICA DA ABA DE IMAGENS
+if [ "$1" == "--img" ]; then
+    if [ -z "$2" ]; then
+
+		# Loop para pegar e renderizar a imagem para deixar a preview
+		# $nome é o texto e $img é o caminho completo para o ícone
+    	for img in "$imagens"/*; do
+    		nome=$(basename "$img")
+			echo -en "$nome\0icon\x1f$img\n"
+		done
+    else
+        # Se $2 tem texto, tu apertou Enter em alguma opção!
+        killall swaybg mpvpaper 2>/dev/null
+        swaybg -i "$imagens/$2" -m fill > /dev/null 2>&1 &
+
+        # Joga para um scriptzinho só para que na próxima inicialização (ou reload do sway),
+	    # lembre que é esse walpaper que tá selecionado, também joga a shebang para que o kernel
+	    # reconheça que é um arquivo binário
+		echo -e "#!/bin/bash\nswaybg -i '$imagens/$2' -m fill > /dev/null 2>&1 &" > ~/.cache/wall_atual.sh
+		disown
+	    exit 0
+    fi
+fi
+
+# 3. A LÓGICA DA ABA DE VÍDEOS
+if [ "$1" == "--vid" ]; then
+    if [ -z "$2" ]; then
+       # Loop para pegar e renderizar a imagem para deixar a preview
+	   for vid in "$videos"/*; do
+	  	   nome=$(basename "$vid")
+
+	  	   # Usa um icone genérico para não ter que renderizar os videos
+           echo -en "$nome\0icon\x1fvideo-x-generic\n"
+       done
+    else
+        # Tu apertou Enter no vídeo pra fritar a Radeon 680M!
+        killall swaybg mpvpaper 2>/dev/null
+        mpvpaper -pa ACTIVE -o "loop no-audio panscan=1.0" "*" "$videos/$2" > /dev/null 2>&1 &
+
+        # Mesma coisa aqui, só q pra walpapers animados
+        echo -e "#!/bin/bash\nmpvpaper -pa ACTIVE -o 'loop no-audio panscan=1.0' '*' '$videos/$2' > /dev/null 2>&1 &" >  ~/.cache/wall_atual.sh
+
+        disown
+	    exit 0
+    fi
+fi

@@ -1,0 +1,5 @@
+configuration {
+	font: "FiraCode Nerd Font 12", "Font Awesome 7 Brands 12";
+	drun-match-fields: "name,generic,exec,categories,keywords";
+}
+@theme "theme.rasi"

@@ -1,0 +1,24 @@
+configuration {
+	mode: "drun";
+	font: "FiraCode Nerd Font 12";
+	show-icons: true;
+	icon-theme: "hicolor";
+	drun-match-fields: "name,generic,exec,categories,keywords";
+	click-to-exit: true;
+	//matching: "fuzzy";
+
+	// Por padrão o rofi pega os aplicativos mais usados e joga no topo da lista
+	// Aqui força pegar na ordem alfabética;
+	disable-history: true;
+	drun {
+		display-name: "Applications";
+	}
+	run {
+		display-name: "Play";
+	}
+	timeout {
+		delay: 15;
+		action: "kb-cancel";
+	}
+}
+@theme "theme.rasi"

@@ -1,0 +1,21 @@
+#!/bin/bash
+
+# Pega o status atual (Playing ou Paused)
+player=$(playerctl metadata -f "{{playerName}}" 2>/dev/null)
+STATUS=$(playerctl --player="$player" status 2>/dev/null)
+
+# Se estiver tocando música
+if [ "$STATUS" = "Playing" ]; then
+    ICON="" # Ícone de Pause (porque a música já tá tocando)
+elif [ "$STATUS" = "Paused" ]; then
+    ICON="" # Ícone de Play (porque tá pausado)
+else
+    # Se der merda ou fechar o player, morre silenciosamente
+    exit 1 
+fi
+
+# Pega o nome da música e manda o retorno indesejado para o buraco negro
+INFO=$(playerctl metadata --format '{{title}}' 2>/dev/null)
+
+# Cospe o ícone dinâmico junto com o nome da música pra Waybar ler!
+echo "$ICON  $INFO"

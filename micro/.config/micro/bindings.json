@@ -1,0 +1,12 @@
+{
+    "CtrlUnderscore": "lua:comment.comment",
+    "Ctrl-w": "Save,Quit",
+    "Ctrl-d": "DeleteLine",
+    "CtrlBackspace": "DeleteWordLeft",
+    "Shift-Alt-Left": "OutdentLine",
+    "Shift-Alt-Right": "IndentLine",
+    "Shift-Alt-Up": "MoveLinesUp",
+    "Shift-Alt-Down": "MoveLinesDown",
+    "Alt-Ctrl-Up": "DuplicateLine",
+    "Alt-Ctrl-Down": "DuplicateLine"
+}

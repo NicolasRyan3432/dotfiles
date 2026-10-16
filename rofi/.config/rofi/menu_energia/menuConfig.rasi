@@ -1,0 +1,7 @@
+configuration {
+	click-to-exit: true;
+	font: "FiraCode Nerd Font 12";
+}
+
+@theme "menuEnergia"
+

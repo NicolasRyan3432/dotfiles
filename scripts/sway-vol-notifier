@@ -1,0 +1,10 @@
+#!/bin/sh
+
+INFO=$(wpctl get-volume @DEFAULT_AUDIO_SINK@)
+VOL=$(echo "$INFO" | awk '{print int($2 * 100)}')
+
+if echo "$INFO" | grep -q "MUTED"; then
+    notify-send -t 1000 -a 'wp-vol' -h string:x-canonical-private-synchronous:volume -h int:value:0 "Volume: MUDO"
+else
+    notify-send -t 1000 -a 'wp-vol' -h string:x-canonical-private-synchronous:volume -h int:value:"$VOL" "Volume: ${VOL}%"
+fi

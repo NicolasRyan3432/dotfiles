@@ -1,0 +1,17 @@
+{
+    "colorscheme": "monokai",
+    "mkparents": true,
+    "autosave": 30,
+    "autoclose": true,
+    "cursorline": true,
+    "eofnewline": true,
+    "fastdirty": true,
+    "matchbrace": true,
+    "rmtrailingws": true,
+    "savecursor": true,
+    "scrollspeed": 5,
+    "tabsize": 4,
+    "tabstospaces": true,
+    "wordwrap": true
+}
+

@@ -1,0 +1,53 @@
+#!/bin/bash
+
+# caso exista um menu aberto
+if pgrep -f 'rofi -dmenu -config /home/nicolasryan/.config/rofi/menu_energia/menuConfig.rasi -i -p Modo' > /dev/null; then
+	# Se existir, mata o processo (colchetes é para ele não se matar)
+	# Interrompe o script
+	pkill -f '[r]ofi -dmenu -config /home/nicolasryan/.config/rofi/menu_energia/menuConfig.rasi -i -p Modo'
+	exit 0
+fi
+
+profile="$(powerprofilesctl get)"
+profileT=""
+
+# Se existir já um swayidle ativo
+if pgrep -x "swayidle" > /dev/null; then
+	estado="Desabilitar Sleep"
+else
+	estado="Habilitar Sleep"
+fi
+
+opcoes=("Desempenho" "Padrão" "Economia" "$estado")
+
+case $profile in
+	"performance") profileT="Desempenho" ;;
+	"balanced") profileT="Padrão" ;;
+	"power-saver") profileT="Economia" ;;
+esac
+
+for ((i=0; i<3; i++)); do
+	op=${opcoes[$i]}
+ 	if [ $op = $profileT ]; then
+ 		opcoes[$i]="$op <-"
+	fi
+done
+
+# Pega tudo que tem no array separado pelos índices
+# (sem "" ele acha que $op <- são dois itens)
+# E joga a lista pro rofi.
+escolha=$(printf "%s\n" "${opcoes[@]}"  | rofi -dmenu -config ~/.config/rofi/menu_energia/menuConfig.rasi -i -p "Modo")
+
+# Se for ESC, termina a execução
+if [ -z "$escolha" ]; then
+	exit 0;
+fi
+
+case "$escolha" in
+	"Desempenho"*) powerprofilesctl set performance ;;
+	"Padrão"*) powerprofilesctl set balanced ;;
+	"Economia"*) powerprofilesctl set power-saver ;;
+
+	"Desabilitar Sleep") killall swayidle ;;
+	"Habilitar Sleep") ~/.config/swayidle/idleconf
+esac

@@ -1,0 +1,10 @@
+configuration {
+	mode: "window";
+	font: "FiraCode Nerd Font 12";
+	drun-match-fields: "name,generic,exec,categories,keywords";
+	window-format: "{c} -> {t}";
+	window {
+		display-name: "Windows";
+	}
+}
+@theme "theme.rasi"

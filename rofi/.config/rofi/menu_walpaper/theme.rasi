@@ -1,0 +1,106 @@
+
+* {
+	background: #1E1F1CE6;
+    foreground: #F8F8F280;
+    background-color: #272822E6;
+    normal-background: transparent;
+    normal-foreground: var(foreground);
+    selected-normal-foreground:  #F8F8F2;
+    selected-normal-background:  #49483E;
+    separatorcolor:  rgba(249, 38, 114, 0.7);
+    cursor-color: rgba(102, 217, 239, 0.5);
+}
+window {
+	width: 800px;
+    border: 2;
+    background-color: var(background-color);
+    border-color: var(separatorcolor);
+}
+listview {
+    scrollbar:    true;
+    border-color: var(separatorcolor);
+    spacing:      2px;
+    border:       2px 0 0;
+    flow: horizontal;
+    columns: 5;
+    lines: 3;
+}
+error-message {
+    padding: 20px;
+    background-color: #2D2A2E; 
+}
+textbox {
+    background-color: transparent;
+    text-color: var(normal-foreground); 
+    vertical-align: 0.5;
+    horizontal-align: 0.5;
+}
+element {
+	background-color: transparent;
+	padding: 0 0px 0 0px;
+    border-radius: 16px;
+    margin: 10px;
+    cursor: pointer;
+    orientation: vertical;
+}
+element.normal {
+	text-color: var(normal-foreground);
+	background-color: var(normal-background);
+}
+element.selected {
+	border: 2px;
+	border-color: var(separatorcolor);
+    background-color: var(selected-normal-background);
+    text-color:       var(selected-normal-foreground);
+}
+element-text {
+    background-color: inherit;
+    text-color:       inherit;
+    vertical-align: 0.5;
+	horizontal-align: 0.5;
+	margin: 10px 2px;
+    cursor: pointer;
+}
+element-icon {
+	background-color: inherit;
+	text-color: inherit;
+	vertical-align: 0.5;
+	cursor: pointer;
+	size: 100px;
+}
+scrollbar {
+    width:        6px;
+    border:       2px;
+    handle-color: var(separatorcolor);
+    handle-width: 5px;
+    padding:      1px;
+}
+inputbar {
+    padding:    1px;
+    spacing:    0;
+    text-color: var(normal-foreground);
+    children:   [ "prompt","textbox-prompt-colon","entry","case-indicator" ];
+}
+case-indicator {
+    spacing:    0;
+    text-color: var(normal-foreground);
+}
+entry {
+	padding: 5px 0 5px 0;
+    text-color: #F8F8F2;
+    cursor-color: var(cursor-color);
+    hide-cursor-on-empty: true;
+}
+prompt {
+	padding: 0 0 0 5px;
+	vertical-align: 0.5;
+    spacing:    0;
+    text-color: #F8F8F2;
+}
+textbox-prompt-colon {
+	vertical-align: 0.5;
+    margin:     0 0.3000em 0 0;
+    expand:     false;
+    str:        ":";
+    text-color: #F8F8F2;
+}

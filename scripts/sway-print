@@ -1,0 +1,33 @@
+#!/bin/bash
+
+# Se tiver já gravando alguma coisa
+if pgrep -x "wf-recorder" > /dev/null; then
+	# Manda um sinal equivalente ao Crtl+C para parar a gravação
+    pkill -SIGINT wf-recorder
+    
+    notify-send -u normal "Gravação Encerrada" "Video salvo com sucesso!!"
+    exit 0 # Mata o script aqui, nem abre o menu do Rofi
+fi
+
+monitor_ativo=$(swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .name')
+caminhoImagem="$HOME/Pictures/Capturas de tela/Screenshot_$(date +%d-%m-%Y_%H%M%S).png"
+caminhoVideo="$HOME/Videos/Screencasts/Captura_$(date +%d-%m-%Y_%H%M%S).mp4"
+
+
+
+opcoes=("Captura em tela cheia" "Captura em seleção" "Gravar tela (com audio)" "Gravar tela (sem audio)" "Gravar seleção")
+
+escolha=$(printf "%s\n" "${opcoes[@]}"  | rofi -dmenu -config ~/.config/rofi/menu_print/config.rasi -i -p "Captura")
+
+# Se for ESC, termina a execução
+if [ -z "$escolha" ]; then
+	exit 0;
+fi
+
+case "$escolha" in 
+	*"em seleção") grim -g "$(slurp -b#20303090)" "$caminhoImagem" && wl-copy -t image/png < "$caminhoImagem" ;;
+	*"tela cheia") grim -o "$monitor_ativo" "$caminhoImagem" && wl-copy -t image/png < "$caminhoImagem" ;; 
+	*"(com audio)") wf-recorder -o "$monitor_ativo" -a -c hevc_vaapi -d /dev/dri/renderD128 -f "$caminhoVideo" ;;
+	*"(sem audio)") wf-recorder -o "$monitor_ativo" -c hevc_vaapi -d /dev/dri/renderD128 -f "$caminhoVideo" ;;
+	*"seleção") wf-recorder -o "$monitor_ativo" -g "$(slurp -b#20303090)" -c hevc_vaapi -d /dev/dri/renderD128 -f "$caminhoVideo" ;;
+esac

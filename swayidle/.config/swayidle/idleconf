@@ -1,0 +1,11 @@
+#!/bin/bash
+
+# Mata qualquer execução que esteja na memória (caso não tenha nenhuma, joga o lixo no vazio)
+killall swayidle 2>/dev/null
+
+swayidle -w \
+          timeout 180 'swaylock -f -C ~/.config/swaylock/lockconf' \
+          timeout 300 'swaymsg "output * power off"' \
+          resume 'swaymsg "output * power on"' \
+          before-sleep 'swaylock -f -C ~/.config/swaylock/lockconf' &
+

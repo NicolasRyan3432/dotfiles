@@ -1,0 +1,12 @@
+#!/bin/bash
+
+# pega o valor atual
+atual=$(brightnessctl g)
+
+# pega o valor máximo
+maximo=$(brightnessctl m)
+
+# transforma em porcentagem
+valor=$(( (atual * 100) / maximo ))
+
+notify-send -t 1000 -a 'wp-vol' -h string:x-canonical-private-synchronous:volume -h int:value:"$valor" "Brilho: ${valor}%"

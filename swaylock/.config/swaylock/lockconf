@@ -1,0 +1,35 @@
+
+image=/home/nicolasryan/Pictures/Wallpapers/39.jpg
+scaling=stretch
+
+indicator-radius=50
+indicator-thickness=15
+
+# Remove as linhas de dentro dos gomos do anel
+line-color=00000000
+line-clear-color=00000000
+
+# Cor de dentro do anel
+ring-color=49483E
+
+# Cor de dentro do anel, 00 no final é o canal alpha pra ficar transparente
+inside-color=27282200
+text-color=F8F8F2
+
+# Cor ao digitar a senha
+key-hl-color=F92672
+
+# Cor ao limpar a senha
+ring-clear-color=FD971F
+inside-clear-color=272822
+text-clear-color=FD971F
+
+# Verificando senha
+ring-ver-color=A6E22E
+inside-ver-color=272822
+text-ver-color=A6E22E
+
+# Senha errada
+ring-wrong-color=F92672
+inside-wrong-color=272822
+text-wrong-color=F92672

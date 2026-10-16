@@ -1,0 +1,19 @@
+{
+    "workbench.editorAssociations": {
+        "{git,gitlens,chat-editing-snapshot-text-model,copilot,git-graph,git-graph-3}:/**/*.qrc": "default",
+        "*.qrc": "qt-core.qrcEditor"
+    },
+    "files.autoSave": "afterDelay",
+    "editor.fontFamily": "'JetBrains Mono', 'Font Awesome 7 Free', 'FiraCode Nerd Font', serif",
+    "workbench.colorTheme": "Visual Studio Dark",
+    "editor.fontLigatures": true,
+    "workbench.activityBar.autoHide": true,
+    "workbench.editor.decorations.colors": false, 
+    "qt-qml.qmlls.additionalImportPaths": [
+        "/usr/lib64/qt6/qml"
+    ],
+    "workbench.statusBar.visible": false,
+    "qt-core.showWelcomePageOnActivation": false,
+    "qt-qml.qmlls.useQmlImportPathEnvVar": true,
+    "editor.minimap.enabled": false
+}

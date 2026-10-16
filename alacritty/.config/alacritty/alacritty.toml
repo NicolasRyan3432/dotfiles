@@ -1,0 +1,54 @@
+[env]
+TERM = "xterm-256color"
+
+[window]
+padding = {
+	x = 2,
+	y = 2
+}
+
+dynamic_padding = true
+opacity = 0.8
+blur = true
+decorations_theme_variant = "Dark"
+
+[font]
+size = 12.0
+
+[font.normal]
+family = "FiraCode Nerd Font Mono"
+style = "Regular"
+
+[font.bold]
+family = "FiraCode Nerd Font"
+style = "Bold"
+
+[font.italic]
+family = "FiraCode Nerd Font"
+style = "Italic"
+
+
+[colors.primary]
+background = "#1e1e1e"
+foreground = "#d4d4d4"
+
+[cursor]
+style = {
+	shape = "Beam",
+	blinking = "On"
+}
+
+[mouse]
+hide_when_typing = true
+
+[[hints.enabled]]
+command = "xdg-open"
+hyperlinks = true
+post_processing = true
+persist = false
+mouse.enabled = true
+binding  = {
+	key = "O",
+	mods = "Control|Shift"
+}
+regex = "(ipfs:|ipns:|magnet:|mailto:|gemini://|gopher://|https://|http://|news:|file:|git://|ssh:|ftp://)[^\\u0000-\\u001F\\u007F-\\u009F<>\"\\s{-}\\^⟨⟩`]+"

@@ -1,0 +1,133 @@
+# Configurações fodas do starship (Neon Gradient Edition)
+
+format = """
+$username\
+$os\
+$directory\
+$git_branch\
+$git_status\
+$python\
+$java\
+$nodejs\
+$golang\
+$rust\
+$c\
+$docker_context\
+\n$character
+"""
+
+add_newline = true
+
+
+#######################
+# CONFIGURAÇÃO VISUAL #
+#######################
+
+[username]
+format = '[$user]($style) '
+style_user = 'bold #89dceb'    # Ciano (Eletricidade)
+style_root = 'bold #ff073a'    # Vermelho Neon Sangue (Perigo!)
+show_always = true
+
+
+[os]
+format = 'on [($name )]($style)'
+style = 'bold #89b4fa'         # Azul Profundo
+disabled = false
+
+
+[os.symbols]
+Arch = " "
+Ubuntu = " "
+Linux = " "
+Windows = "󰍲 "
+
+
+[directory]
+format = 'in [($path)]($style)[($read_only)]($read_only_style) '
+style = 'bold #bd93f9'         # AGORA SIM: Roxo Neon (A ponte entre Azul e Vermelho)
+read_only_style = 'bold #ff073a' # Vermelho Neon se tiver bloqueado
+truncation_length = 5
+truncation_symbol = '…/'
+home_symbol = '~'
+read_only = " 󰌾"
+
+
+[character]
+success_symbol = '[➜](bold #a6e3a1)' # Verde
+error_symbol = '[➜](bold #ff073a)'   # Vermelho Neon
+
+
+[sudo]
+disabled = true
+
+[status]
+disabled = false
+format = '[$symbol Presta atenção caralho!!]($style) '
+symbol = "🚨"
+style = "bold red"
+
+####################
+# CONFIGURAÇÃO GIT #
+####################
+
+[git_branch]
+symbol = " "
+style = "bold #ff073a"         # Branch Vermelho Neon
+format = 'on [$symbol$branch]($style) '
+
+
+[git_status]
+style = "bold #bd93f9"         # Status Roxo Neon (Pra combinar com o dir)
+format = '([$all_status$ahead_behind]($style) )'
+
+
+#########################################################
+# OUTRAS LINGUAGENS                                     #
+#########################################################
+
+[python]
+symbol = " "
+style = "bold #f9e2af"         # Amarelo
+format = 'via [${symbol}${version}]($style) '
+
+
+[java]
+symbol = " "
+style = "bold #fab387"         # Laranja
+format = 'via [${symbol}${version}]($style) '
+
+
+[nodejs]
+symbol = " "
+style = "bold #a6e3a1"         # Verde
+format = 'via [${symbol}${version}]($style) '
+
+
+[golang]
+symbol = " "
+style = "bold #74c7ec"         # Azul Claro
+format = 'via [${symbol}${version}]($style) '
+
+
+[rust]
+symbol = "󱘗 "
+style = "bold #ff073a"         # Rust Vermelho
+format = 'via [${symbol}${version}]($style) '
+
+
+[c]
+symbol = " "
+style = "bold #89b4fa"         # Azul
+format = 'via [${symbol}${version}]($style) '
+
+
+[docker_context]
+symbol = " "
+style = "bold #89b4fa"         # Azul
+format = 'via [${symbol}${context}]($style) '
+
+
+[package]
+symbol = "󰏗"
+disabled = true

@@ -1,0 +1,74 @@
+#!/bin/bash
+
+# 1. PEGA O ALVO INICIAL
+# Ou ele usa o que tu passou por parâmetro, ou caça o que tá tocando agora!
+
+alvo_atual="${1:-$(playerctl metadata -f "{{playerName}}" 2>/dev/null)}"
+
+if [ -z "$alvo_atual" ]; then
+    rofi -e "Nenhuma mídia ativa no momento, chefe!"
+    exit 0
+fi
+
+# 2. O MEGAZORD (A função principal do Menu)
+menu_principal() {
+    local player_id="$1"
+    local player_nome="$player_id"
+
+    # Arruma o nome SÓ pro player que a gente botou na mira agora!
+    if [[ "$player_id" == brave* || "$player_id" == *"plasma-browser-integration"* ]]; then
+        player_nome="Brave"
+    elif [[ "$player_id" == spotify* ]]; then
+        player_nome="Spotify"
+    fi
+
+    local listaAcoes=("Play/Pause" "Next" "Previous" "Stop" "󰴪" "󰵱" "Trocar Player")
+
+    # Invoca o Rofi com o nome certo!
+    local acao=$(printf "%s\n" "${listaAcoes[@]}" | rofi -dmenu -config ~/.config/rofi/menu_musica/config.rasi -i -p "$player_nome")
+
+    if [ -z "$acao" ]; then
+        exit 0
+    fi
+
+    case "$acao" in
+        "Play/Pause") playerctl -p "$player_id" play-pause ;;
+        "Next")       playerctl -p "$player_id" next ;;
+        "Previous")   playerctl -p "$player_id" previous ;;
+        "Stop")       playerctl -p "$player_id" stop ;;
+        "󰴪")          playerctl -p "$player_id" position 10- ;;
+        "󰵱")          playerctl -p "$player_id" position 10+ ;;
+        "Trocar Player") menu_trocar ;; # Chama a função de troca!
+    esac
+}
+
+# 3. A FUNÇÃO DE TROCA (O tubo de ensaio psiquiátrico)
+menu_trocar() {
+    mapfile -t lista < <(playerctl -l)
+    local listaF=()
+
+    for item in "${lista[@]}"; do
+        if [[ "$item" == brave* || "$item" == *"plasma-browser-integration"* ]]; then
+            listaF+=("Brave [$item]")
+        elif [[ "$item" == spotify* ]]; then
+            listaF+=("Spotify [$item]")
+        else
+            listaF+=("$item [$item]")
+        fi
+    done
+
+    # Abre o menuzinho secundário
+    local alvo=$(printf "%s\n" "${listaF[@]}" | rofi -dmenu -config ~/.config/rofi/menu_musica/configMenuzinho.rasi -i -p "Qual player")
+
+    if [ -n "$alvo" ]; then
+        # Extrai o CNPJ da bomba
+        local id_real=$(echo "$alvo" | awk -F'[][]' '{print $2}')
+
+        # A MÁGICA: Chama o menu principal DE NOVO, agora com a arma apontada pro novo player!
+        menu_principal "$id_real"
+    fi
+}
+
+# 4. START DA MATRIX
+# Injeta a chave na ignição!
+menu_principal "$alvo_atual"

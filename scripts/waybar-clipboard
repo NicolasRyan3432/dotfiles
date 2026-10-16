@@ -1,0 +1,13 @@
+#!/bin/bash
+
+# caso exista um menu aberto
+if pgrep -f 'rofi -dmenu -i -p Buffer -config /home/nicolasryan/.config/rofi/clipboard/config.rasi' > /dev/null; then
+	# Se existir, mata o processo (colchetes é para ele não se matar)
+	# Interrompe o script
+	pkill -f '[r]ofi -dmenu -i -p Buffer -config /home/nicolasryan/.config/rofi/clipboard/config.rasi'
+	exit 0
+fi
+
+
+# Se não tiver nenhuma execução aberta, roda a lista 
+cliphist list | rofi -dmenu -i -p 'Buffer' -config /home/nicolasryan/.config/rofi/clipboard/config.rasi | cliphist decode | wl-copy
