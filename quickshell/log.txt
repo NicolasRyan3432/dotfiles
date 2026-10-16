@@ -1,0 +1,51 @@
+[32m  INFO[0m: Launching config: "/home/nicolasryan/.config/quickshell/shell.qml"
+[32m  INFO[0m: Shell ID: "9a84947e0e1a3052af4c7f5e3d44ef31" Path ID "9a84947e0e1a3052af4c7f5e3d44ef31"
+[32m  INFO[0m: Saving logs to "/run/user/1000/quickshell/by-id/tzy512eymt/log.qslog"
+[32m  INFO[0m: QML tooling support enabled
+[33m  WARN[97m scene[0m: QML Settings at @singletons/AppLauncherState.qml[21:29]: Failed to initialize QSettings instance. Status code is: 1
+[33m  WARN[97m scene[0m: QML Settings at @singletons/AppLauncherState.qml[21:29]: The following application identifiers have not been set: QList("organizationName", "organizationDomain")
+[33m  WARN[97m scene[0m: @shell.qml[13:-1]: TypeError: Cannot read property 'name' of null
+[33m  WARN[97m scene[0m: @windows/WallpaperWindow.qml[9:5]: Unable to assign [undefined] to qs::wayland::layershell::WlrLayer::Enum
+[33m  WARN[97m scene[0m: @windows/WallpaperWindow.qml[9:5]: Unable to assign [undefined] to qs::wayland::layershell::WlrLayer::Enum
+[33m  WARN[97m quickshell.I3.ipc[0m: I3 event socket disconnected.
+[32m  INFO[0m: Configuration Loaded
+[32m  INFO[0m: Launching config: "/home/nicolasryan/.config/quickshell/shell.qml"
+[32m  INFO[0m: Shell ID: "9a84947e0e1a3052af4c7f5e3d44ef31" Path ID "9a84947e0e1a3052af4c7f5e3d44ef31"
+[32m  INFO[0m: Saving logs to "/run/user/1000/quickshell/by-id/e2z522eymt/log.qslog"
+[32m  INFO[0m: QML tooling support enabled
+[33m  WARN[97m scene[0m: QML Settings at @singletons/AppLauncherState.qml[21:29]: Failed to initialize QSettings instance. Status code is: 1
+[33m  WARN[97m scene[0m: QML Settings at @singletons/AppLauncherState.qml[21:29]: The following application identifiers have not been set: QList("organizationName", "organizationDomain")
+[33m  WARN[97m scene[0m: @shell.qml[13:-1]: TypeError: Cannot read property 'name' of null
+[33m  WARN[97m scene[0m: @windows/WallpaperWindow.qml[9:5]: Unable to assign [undefined] to qs::wayland::layershell::WlrLayer::Enum
+[33m  WARN[97m scene[0m: @windows/WallpaperWindow.qml[9:5]: Unable to assign [undefined] to qs::wayland::layershell::WlrLayer::Enum
+[33m  WARN[97m quickshell.I3.ipc[0m: I3 event socket disconnected.
+[32m  INFO[0m: Configuration Loaded
+[32m  INFO[0m: Launching config: "/home/nicolasryan/.config/quickshell/shell.qml"
+[32m  INFO[0m: Shell ID: "9a84947e0e1a3052af4c7f5e3d44ef31" Path ID "9a84947e0e1a3052af4c7f5e3d44ef31"
+[32m  INFO[0m: Saving logs to "/run/user/1000/quickshell/by-id/s4z532eymt/log.qslog"
+[32m  INFO[0m: QML tooling support enabled
+[33m  WARN[97m scene[0m: QML Settings at @singletons/AppLauncherState.qml[21:29]: Failed to initialize QSettings instance. Status code is: 1
+[33m  WARN[97m scene[0m: QML Settings at @singletons/AppLauncherState.qml[21:29]: The following application identifiers have not been set: QList("organizationName", "organizationDomain")
+[33m  WARN[97m scene[0m: @shell.qml[13:-1]: TypeError: Cannot read property 'name' of null
+[33m  WARN[97m scene[0m: @windows/WallpaperWindow.qml[9:5]: Unable to assign [undefined] to qs::wayland::layershell::WlrLayer::Enum
+[33m  WARN[97m scene[0m: @windows/WallpaperWindow.qml[9:5]: Unable to assign [undefined] to qs::wayland::layershell::WlrLayer::Enum
+[33m  WARN[97m quickshell.I3.ipc[0m: I3 event socket disconnected.
+[32m  INFO[0m: Configuration Loaded
+[32m  INFO[0m: Launching config: "/home/nicolasryan/.config/quickshell/shell.qml"
+[32m  INFO[0m: Shell ID: "9a84947e0e1a3052af4c7f5e3d44ef31" Path ID "9a84947e0e1a3052af4c7f5e3d44ef31"
+[32m  INFO[0m: Saving logs to "/run/user/1000/quickshell/by-id/7a06s3eymt/log.qslog"
+[32m  INFO[0m: QML tooling support enabled
+[33m  WARN[97m scene[0m: QML Settings at @singletons/AppLauncherState.qml[21:29]: Failed to initialize QSettings instance. Status code is: 1
+[33m  WARN[97m scene[0m: QML Settings at @singletons/AppLauncherState.qml[21:29]: The following application identifiers have not been set: QList("organizationName", "organizationDomain")
+[33m  WARN[97m scene[0m: @shell.qml[13:-1]: TypeError: Cannot read property 'name' of null
+[33m  WARN[97m quickshell.I3.ipc[0m: I3 event socket disconnected.
+[32m  INFO[0m: Configuration Loaded
+[32m  INFO[0m: Launching config: "/home/nicolasryan/.config/quickshell/shell.qml"
+[32m  INFO[0m: Shell ID: "9a84947e0e1a3052af4c7f5e3d44ef31" Path ID "9a84947e0e1a3052af4c7f5e3d44ef31"
+[32m  INFO[0m: Saving logs to "/run/user/1000/quickshell/by-id/tpi6ehhymt/log.qslog"
+[32m  INFO[0m: QML tooling support enabled
+[33m  WARN[97m scene[0m: QML Settings at @singletons/AppLauncherState.qml[21:29]: Failed to initialize QSettings instance. Status code is: 1
+[33m  WARN[97m scene[0m: QML Settings at @singletons/AppLauncherState.qml[21:29]: The following application identifiers have not been set: QList("organizationName", "organizationDomain")
+[33m  WARN[97m scene[0m: @shell.qml[13:-1]: TypeError: Cannot read property 'name' of null
+[33m  WARN[97m quickshell.I3.ipc[0m: I3 event socket disconnected.
+[32m  INFO[0m: Configuration Loaded
