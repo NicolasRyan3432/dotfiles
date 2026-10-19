@@ -1,5 +1,4 @@
 pragma ComponentBehavior: Bound
-import Quickshell.Wayland
 import Quickshell.Networking
 import QtQuick
 import "../../components" as Components
@@ -99,7 +98,7 @@ Item {
                     family: Singletons.Theme.font
                     pixelSize: Singletons.Theme.fontSize
                 }
-                color: Singletons.Theme.base3
+                color: Singletons.Theme.fg_light
                 text: "Enable the wifi to see all the networks!!"  
             }
 
@@ -114,7 +113,7 @@ Item {
                     family: Singletons.Theme.font
                     pixelSize: Singletons.Theme.fontSize
                 }
-                color: Singletons.Theme.base3
+                color: Singletons.Theme.fg_light
                 text: "Avaliable networks"
             }
 
@@ -129,7 +128,7 @@ Item {
                     right: parent.right
                     verticalCenter: parent.verticalCenter
                 }
-                color: refreshMouse.containsMouse ? Singletons.Theme.base1 : Singletons.Theme.bbase3
+                color: refreshMouse.containsMouse ? Singletons.Theme.fg_light : "transparent"
 
                 Behavior on color {
                     ColorAnimation {duration: 150}
@@ -141,8 +140,8 @@ Item {
                     anchors.centerIn: parent
                     text: "refresh"
                     color: {
-                        if(root.wifiDevice && root.wifiDevice.scannerEnabled) return Singletons.Theme.base6
-                        if(refreshMouse.containsMouse) return Singletons.Theme.base6
+                        if(root.wifiDevice && root.wifiDevice.scannerEnabled) return Singletons.Theme.fg
+                        if(refreshMouse.containsMouse) return Singletons.Theme.fg
                     }
                     font {
                         family: Singletons.Theme.iconFont
@@ -201,7 +200,7 @@ Item {
                 width: wifiList.width
                 height: (showPasswordBox || showConfigBox) ? 100 : 55
                 clip: true
-                color: mouseArea.containsMouse? Singletons.Theme.base4 : Singletons.Theme.base3
+                color: itensArea.containsMouse? Singletons.Theme.comment : "transparent"
                 radius: 12
                 required property var modelData
                 
@@ -240,7 +239,7 @@ Item {
                         Text {
                             anchors.verticalCenter: parent.verticalCenter
                             text: root.getWifiIcon(itens.modelData.signalStrength)
-                            color: itens.modelData.connected ? Singletons.Theme.base11 : Singletons.Theme.base6
+                            color: itens.modelData.connected ? Singletons.Theme.base2 : Singletons.Theme.fg
                             font {
                                 family: Singletons.Theme.iconFont
                                 pixelSize: 20
@@ -262,8 +261,10 @@ Item {
                             weight: Font.Bold
                         }
 
-                        color: itens.modelData.connected? Singletons.Theme.base7: Singletons.Theme.base6
+                        color: itens.modelData.connected || itensArea.containsMouse ? Singletons.Theme.fg: Singletons.Theme.fg_light
                         text: itens.modelData.name
+                        
+                        Behavior on color { ColorAnimation { duration: 200} }
                     }
 
                     // networks info
@@ -285,8 +286,11 @@ Item {
                             }
 
                             anchors.verticalCenter: parent.verticalCenter
-                            color: Singletons.Theme.base6
+                            color: itensArea.containsMouse 
+                            ? Singletons.Theme.comment_light : Singletons.Theme.fg_light
                             text: "Security: " + WifiSecurityType.toString(itens.modelData.security)
+
+                            Behavior on color { ColorAnimation { duration: 200 } }
                         }
 
                         // hyphen
@@ -307,7 +311,8 @@ Item {
                                 weight: Font.Light
                             }
                             anchors.verticalCenter: parent.verticalCenter
-                            color: Singletons.Theme.base6
+                            color: itens.modelData.connected || itensArea.containsMouse 
+                            ? Singletons.Theme.base6 : Singletons.Theme.fg_light
                             text: itens.modelData.connected ? "Connected" : itens.modelData.known ? "Saved" : ""
                         }
                     }
@@ -319,7 +324,7 @@ Item {
                             right: parent.right
                             rightMargin: 30
                         }
-                        color: settingsMouse.containsMouse ? Singletons.Theme.bg : "transparent"
+                        color: settingsMouse.containsMouse ? Singletons.Theme.fg_light : "transparent"
                         z: 5
                         width: iconTxt.implicitWidth + 20
                         height: iconTxt.implicitHeight + 10
@@ -365,7 +370,7 @@ Item {
                     }
 
                     MouseArea {
-                        id: mouseArea
+                        id: itensArea
                         anchors.fill: parent
                         hoverEnabled: true
                         cursorShape: Qt.PointingHandCursor

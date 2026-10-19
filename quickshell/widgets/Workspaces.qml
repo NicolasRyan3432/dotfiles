@@ -5,7 +5,7 @@ import "../singletons" as Singletons
 
 Rectangle {
     id: root
-    color: Singletons.Theme.base1
+    color: Singletons.Theme.bg
     radius: height / 2
     width: row.implicitWidth + 10
     height: row.implicitHeight + 8
@@ -45,9 +45,9 @@ Rectangle {
 
                 radius: 10
                 color: {
-                    if(wsData && wsData.urgent) return Singletons.Theme.base8
-                    else if(wsData && wsData.focused) return Singletons.Theme.base7
-                    else if(mouseArea.containsMouse) return  Singletons.Theme.base2
+                    if(wsData && wsData.urgent) return Singletons.Theme.base1
+                    else if(wsData && wsData.focused) return Singletons.Theme.base5
+                    else if(mouseArea.containsMouse) return  Singletons.Theme.comment
                     return "transparent"
                 }
                 Behavior on color {
@@ -64,10 +64,10 @@ Rectangle {
                     id: txtNum
                     text: (item.wsData && item.wsData.urgent)? "!" : item.wsName
                     color: {
-                        if(item.wsData && item.wsData.urgent) return Singletons.Theme.base7
-                        else if(item.wsData && parent.wsData.focused) return Singletons.Theme.bg
-                        else if(mouseArea.containsMouse) return Singletons.Theme.base6
-                        return Singletons.Theme.base3
+                        if(item.wsData && item.wsData.urgent) return Singletons.Theme.fg
+                        else if(item.wsData && parent.wsData.focused) return Singletons.Theme.comment
+                        else if(mouseArea.containsMouse) return Singletons.Theme.fg
+                        return Singletons.Theme.comment_light
                     }
                     anchors.centerIn: parent
                     font {

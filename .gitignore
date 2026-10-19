@@ -1,7 +1,9 @@
 
-quickshell/.config/quickshell/OC/
-quickshell/.config/quickshell/log.txt
-quickshell/.config/quickshell/.qmlls.ini
 men
 
-waybar/.config/waybar/log
+quickshell/OC/
+quickshell/log.txt
+quickshell/.qmlls.ini
+quickshell/colors.json
+
+waybar/log

@@ -57,7 +57,7 @@ PanelWindow {
             bottomRightRadius: Singletons.ControlCenterState.launcherVisible ? 0 : height/2
 
             radius: height/2
-            color: Singletons.Theme.base1
+            color: Singletons.Theme.bg
             
             anchors.verticalCenter: parent.verticalCenter
 

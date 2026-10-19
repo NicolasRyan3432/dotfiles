@@ -4,7 +4,7 @@ import Quickshell.Io
 import Quickshell.Wayland
 import QtQuick
 import "../singletons" as Singletons
-
+import '../components' as Components
 
 PanelWindow {
     id: root
@@ -149,8 +149,7 @@ PanelWindow {
 
         radius: 18
         color: Singletons.Theme.bg
-        border.color: Singletons.Theme.purple
-        border.width: 1
+        border.color: Singletons.Theme.base4
 
         opacity: Singletons.AppLauncherState.launcherVisible ? 1 : 0
         scale: Singletons.AppLauncherState.launcherVisible ? 1 : 0.92
@@ -181,7 +180,7 @@ PanelWindow {
                 height: 4
                 radius: 2
                 anchors.horizontalCenter: parent.horizontalCenter
-                color: Singletons.Theme.comment
+                color: Singletons.Theme.fg_light
             }
 
             Item {
@@ -201,14 +200,10 @@ PanelWindow {
                     anchors.fill: parent
                     radius: 10
                     color: "transparent"
-                    border.color: Singletons.Theme.purple
-                    border.width: 1
+                    border.color: Singletons.Theme.base5
+                    border.width: 1.5
                     opacity: searchInput.activeFocus ? 0.55 : 0
-                    Behavior on opacity {
-                        NumberAnimation {
-                            duration: 150
-                        }
-                    }
+                    Behavior on opacity { NumberAnimation { duration: 150 } }
                 }
 
                 Row {
@@ -320,7 +315,7 @@ PanelWindow {
                         }
                         radius: 10
                         
-                        color: appRow.sel ? Singletons.Theme.comment_light : "transparent"
+                        color: appRow.sel ? Singletons.Theme.comment : "transparent"
                         Behavior on color { ColorAnimation { duration: 100 } }
 
                         Row {
@@ -336,19 +331,18 @@ PanelWindow {
                                 height: parent.height
                                 radius: 9
                                 anchors.verticalCenter: parent.verticalCenter
-                                color: appRow.sel ? Singletons.Theme.purple : Singletons.Theme.comment_light
+                                color: appRow.sel ? Singletons.Theme.base5 : Singletons.Theme.comment
                                 
                                 Behavior on color { ColorAnimation { duration: 100 } }
 
                                 readonly property string path: Quickshell.iconPath(appRow.modelData.icon)
 
-                                Image {
+                                Components.Img {
                                     id: appIcon
                                     anchors.centerIn: parent
-                                    width: 22
-                                    height: 22
-                                    source: parent.path !== "" ? parent.path : ""
-                                    mipmap: true
+                                    imgWidth: 22
+                                    imgHeight: 22
+                                    imgSource: parent.path !== "" ? parent.path : ""
                                     visible: status === Image.Ready
                                 }
 
@@ -382,7 +376,7 @@ PanelWindow {
                                         weight: appRow.sel ? Font.Medium : Font.Normal
                                     }
 
-                                    color: appRow.sel ? Singletons.Theme.fg : Singletons.Theme.comment
+                                    color: appRow.sel ? Singletons.Theme.fg : Singletons.Theme.fg_light
                                     Behavior on color { ColorAnimation { duration: 100 } }
                                 }
 
@@ -396,7 +390,7 @@ PanelWindow {
                                         width: recentLabel.width + 8
                                         height: 14
                                         radius: 4
-                                        color: Singletons.Theme.pink_light
+                                        color: Singletons.Theme.base5
                                         anchors.verticalCenter: parent.verticalCenter
                                         
                                         // Recent app
@@ -410,7 +404,7 @@ PanelWindow {
                                             }
 
                                             opacity: appRow.sel ? 1 : 0.8 
-                                            color: Singletons.Theme.fg
+                                            color: Singletons.Theme.bg
 
                                             Behavior on opacity { OpacityAnimator { duration:100 } }
                                         }
@@ -426,7 +420,7 @@ PanelWindow {
                                             pixelSize: 11
                                             family: Singletons.Theme.font
                                         }
-                                        color: appRow.sel ? Singletons.Theme.fg : Singletons.Theme.comment
+                                        color: appRow.sel ? Singletons.Theme.fg : Singletons.Theme.fg_light
                                         Behavior on color { ColorAnimation { duration:100 } }
                                     }
                                 }

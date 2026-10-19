@@ -1,12 +1,11 @@
 pragma ComponentBehavior: Bound
 import QtQuick
-import Quickshell.I3
 import Quickshell.Io
 import "../singletons" as Singletons
 
 Rectangle {
     id: root
-    color: Singletons.Theme.base1
+    color: Singletons.Theme.bg
     radius: height / 2
     width: row.implicitWidth + 10
     height: row.implicitHeight + 10
@@ -52,7 +51,7 @@ Rectangle {
 
         Text {
             anchors.verticalCenter: parent.verticalCenter
-            color:Singletons.Theme.base5
+            color:Singletons.Theme.fg
             text: root.scratchWindows
             font {
                 pixelSize: Singletons.Theme.fontSize
@@ -66,7 +65,7 @@ Rectangle {
 
         Text {
             anchors.verticalCenter: parent.verticalCenter
-            color: Singletons.Theme.base5
+            color: Singletons.Theme.fg
             text: "select_window"
             font {
                 pixelSize: Singletons.Theme.fontSize

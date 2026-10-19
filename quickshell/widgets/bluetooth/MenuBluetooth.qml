@@ -82,7 +82,7 @@ Item {
             visible: !rootBluetooth.defaultAdapter.enabled
             
             text: "Active the Bluetooth to see all the devices!!!"
-            color: Singletons.Theme.base3
+            color: Singletons.Theme.comment_light
             font.pixelSize: Singletons.Theme.fontSize
             font.family: Singletons.Theme.font
         }
@@ -98,7 +98,7 @@ Item {
                 horizontalCenter: parent.horizontalCenter
             }
             text: "Paired devices"
-            color: Singletons.Theme.base4
+            color: Singletons.Theme.fg
             font.pixelSize: Singletons.Theme.fontSize
             font.family: Singletons.Theme.font
         }
@@ -113,7 +113,7 @@ Item {
             anchors.horizontalCenter: parent.horizontalCenter
 
             text: "There are no paired devices."
-            color: Singletons.Theme.base4 
+            color: Singletons.Theme.comment_light
             font.pixelSize: Singletons.Theme.fontSize
             font.family: Singletons.Theme.font
         }
@@ -157,7 +157,7 @@ Item {
             Text {
                 anchors.verticalCenter: parent.verticalCenter
                 text: "Available devices"
-                color: Singletons.Theme.base4
+                color: Singletons.Theme.fg
                 font {
                     pixelSize: Singletons.Theme.fontSize
                     family: Singletons.Theme.font
@@ -165,18 +165,46 @@ Item {
             }
 
             // Refresh/Stop icon
-            Components.Widgets {
-                icon: rootBluetooth.discovering ? "stop" : "refresh"
-                rootBGColor: rootBluetooth.discovering 
-                ? Singletons.Theme.base2 : Singletons.Theme.base1
-                hasFill: {"FILL": 1}
-                onClicked: {
-                    rootBluetooth.defaultAdapter.discovering = !rootBluetooth.defaultAdapter.discovering
-                    if(rootBluetooth.defaultAdapter.discovering) {
-                        timer.restart()
-                    } 
-                    else {
-                        timer.stop()
+            Rectangle {
+                anchors.verticalCenter: parent.verticalCenter
+                width: iconRefresh.implicitWidth + 30
+                height: iconRefresh.implicitHeight + 2
+                radius: height/2
+                color: rootBluetooth.discovering 
+                ? Singletons.Theme.base5 : Singletons.Theme.fg_light
+
+                Behavior on color { ColorAnimation { duration: 250 } }
+
+                Text {
+                    id: iconRefresh
+                    anchors.centerIn: parent
+                    text: rootBluetooth.discovering? "stop" : "refresh"
+                    color: rootBluetooth.discovering
+                    ? Singletons.Theme.comment : iconArea.containsMouse 
+                    ? Singletons.Theme.fg : Singletons.Theme.comment_light 
+                    renderType: Text.NativeRendering
+                    font {
+                        pixelSize: Singletons.Theme.fontSize
+                        family: Singletons.Theme.iconFont
+                        variableAxes: {"FILL": 1}
+                    }
+                    Behavior on color { ColorAnimation { duration: 250 } }
+                }
+
+
+                MouseArea {
+                    id: iconArea
+                    anchors.fill: parent
+                    hoverEnabled: true
+                    cursorShape: Qt.PointingHandCursor
+                    onClicked:  {
+                        rootBluetooth.defaultAdapter.discovering = !rootBluetooth.defaultAdapter.discovering
+                        if(rootBluetooth.defaultAdapter.discovering) {
+                            timer.restart()
+                        } 
+                        else {
+                            timer.stop()
+                        }
                     }
                 }
             }
@@ -209,7 +237,9 @@ Item {
                 width: parent.width
                 height: 60
                 radius: 12
-                color: mouseArea.containsMouse? Singletons.Theme.base4 : Singletons.Theme.base3
+                color: itensArea.containsMouse? Singletons.Theme.comment : "transparent"
+
+                Behavior on color { ColorAnimation { duration: 250 } }
 
                 // Icon Rectangle
                 Rectangle {
@@ -287,18 +317,22 @@ Item {
 
                     // device name
                     Text {
-                        color: itens.modelData.paired? Singletons.Theme.base7: Singletons.Theme.base6
+                        color: itens.modelData.paired
+                        ? Singletons.Theme.fg : itensArea.containsMouse
+                        ? Singletons.Theme.fg : Singletons.Theme.fg_light
+                        text: itens.modelData.name !== "" ? itens.modelData.name: ""
+                        Behavior on color { ColorAnimation {duration: 250 } }
+
                         font {
                             pixelSize: 18
                             family: Singletons.Theme.font
                             weight: Font.Bold
                         }
-                        text: itens.modelData.name !== "" ? itens.modelData.name: ""
                     }
 
                     // Device type
                     Text {
-                        color: Singletons.Theme.base7
+                        color: Singletons.Theme.comment_light
                         font {
                             pixelSize: 12
                             family: Singletons.Theme.font
@@ -308,7 +342,7 @@ Item {
 
                     // device mac address
                     Text {
-                        color: Singletons.Theme.base7
+                        color: Singletons.Theme.comment_light
                         font {
                             pixelSize: 12
                             family: Singletons.Theme.font
@@ -320,7 +354,7 @@ Item {
 
                 // battery level
                 Text {
-                    color: Singletons.Theme.base7
+                    color: Singletons.Theme.fg
                     font {
                         pixelSize: 12
                         family: Singletons.Theme.font
@@ -339,7 +373,7 @@ Item {
                 }   
 
                 MouseArea {
-                    id: mouseArea
+                    id: itensArea
                     anchors.fill: itens
                     hoverEnabled: true
                     cursorShape: Qt.PointingHandCursor
@@ -371,7 +405,7 @@ Item {
                         implicitWidth: 150
                         border.width: 1
                         border.color: Singletons.Theme.base5
-                        color: Singletons.Theme.base1
+                        color: Singletons.Theme.bg
                         radius: 8
                     }
 
@@ -381,7 +415,7 @@ Item {
                         text: itens.modelData.connected ? "Disconnect" : "Connect"
                         
                         background: Rectangle {
-                            color: itemConnect.highlighted ? Singletons.Theme.base3 : "transparent"
+                            color: itemConnect.highlighted ? Singletons.Theme.fg_light : "transparent"
                             implicitHeight: 36  
                             topRightRadius: 8
                             topLeftRadius: 8  
@@ -389,7 +423,7 @@ Item {
 
                         contentItem: Text {
                             text: itemConnect.text
-                            color: Singletons.Theme.base6
+                            color: Singletons.Theme.comment_light
                             font.family: Singletons.Theme.font
                             font.pixelSize: Singletons.Theme.fontSize
                             verticalAlignment: Text.AlignVCenter
@@ -407,15 +441,13 @@ Item {
                         text: itens.modelData.paired && itens.modelData.trusted ? "Untrust" : "Trust"
 
                         background: Rectangle {
-                            color: itemTrust.highlighted ? Singletons.Theme.base3 : "transparent"
+                            color: itemTrust.highlighted ? Singletons.Theme.fg_light : "transparent"
                             implicitHeight: 36 
-                            bottomLeftRadius: 8
-                            bottomRightRadius: 8   
                         }
 
                         contentItem: Text {
                             text: itemTrust.text
-                            color: Singletons.Theme.base6
+                            color: Singletons.Theme.comment_light
                             font.family: Singletons.Theme.font
                             font.pixelSize: Singletons.Theme.fontSize
                             verticalAlignment: Text.AlignVCenter
@@ -434,7 +466,7 @@ Item {
                         text: itens.modelData.paired ? "Forget Device" : "Pair Device"
 
                         background: Rectangle {
-                            color: itemForget.highlighted ? Singletons.Theme.base3 : "transparent"
+                            color: itemForget.highlighted ? Singletons.Theme.fg_light : "transparent"
                             implicitHeight: 36 
                             bottomLeftRadius: 8
                             bottomRightRadius: 8   
@@ -442,11 +474,12 @@ Item {
 
                         contentItem: Text {
                             text: itemForget.text
-                            color: itemForget.highlighted ? Singletons.Theme.base6 : Singletons.Theme.bbase8
+                            color: itemForget.highlighted ? Singletons.Theme.fg : Singletons.Theme.fg_light
                             font.family: Singletons.Theme.font
                             font.pixelSize: Singletons.Theme.fontSize
                             verticalAlignment: Text.AlignVCenter
                             leftPadding: 10
+                            Behavior on color { ColorAnimation { duration: 250 } }
                         }
                         
                         onTriggered: {

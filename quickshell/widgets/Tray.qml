@@ -7,7 +7,7 @@ import "../components" as Components
 
 Rectangle {
     id: root
-    color: Singletons.Theme.base1
+    color: Singletons.Theme.bg
     radius: height / 2
     width: row.implicitWidth + 30
     height: row.implicitHeight + 9

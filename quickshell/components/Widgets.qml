@@ -12,7 +12,7 @@ Rectangle {
     property var hasFill: { "FILL": mouseArea.containsMouse? 1:0 }
     signal clicked()
     
-    color: mouseArea.containsMouse ? Theme.base1 : Theme.bg
+    color: mouseArea.containsMouse ? Theme.comment : Theme.bg
     width: row.implicitWidth + padX 
     height: row.implicitHeight + padY
     radius: height / 2 
@@ -47,7 +47,7 @@ Rectangle {
             font.weight: Font.Normal
             font.pixelSize: Theme.fontSize
             font.family: Theme.font
-            color: mouseArea.containsMouse ? Theme.base6 : Theme.base5
+            color: mouseArea.containsMouse ? Theme.fg : Theme.comment_light
             visible: mouseArea.containsMouse || root.isVisible
         }
 
@@ -57,7 +57,7 @@ Rectangle {
             font.weight: Font.Normal
             font.pixelSize: Theme.fontSize
             font.family: Theme.iconFont
-            color: mouseArea.containsMouse ? Theme.base6 : Theme.base5
+            color: mouseArea.containsMouse ? Theme.fg : Theme.comment_light
             renderType: Text.NativeRendering
             font.variableAxes: root.hasFill
         }
